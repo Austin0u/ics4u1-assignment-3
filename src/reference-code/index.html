@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="/images/cat.jpg">
+  <link rel="stylesheet" href="/style.css" />
+  <title>Cubic Solver</title>
+</head>
+
+<body>
+  <div id="app">
+    <div class="container">
+      <img id="cat" src="images/cat.jpg" alt="A cat on a computer">
+      <h1 class="title">Cubic Solver</h1>
+      <form id="cubic-form">
+        <div class="inputs-container">
+          <div class="input-group">
+            <label for="a">a-value</label>
+            <input type="number" id="a" name="a" required />
+          </div>
+          <div class="input-group">
+            <label for="b">b-value</label>
+            <input type="number" id="b" name="b" required />
+          </div>
+          <div class="input-group">
+            <label for="c">c-value</label>
+            <input type="number" id="c" name="c" required />
+          </div>
+          <div class="input-group">
+            <label for="d">d-value</label>
+            <input type="number" id="d" name="d" required />
+          </div>
+        </div>
+        <input type="submit" id="submit-button" value="Solve Cubic" />
+      </form>
+    </div>
+    <div id="results-container" style="visibility: hidden">
+      <h3 id="result-equation"></h3>
+      <div class="results-layout">
+        <div class="data-section">
+          <div class="value-card">
+            <div class="value-pair">
+              <span class="value-label">p:</span>
+              <span id="result-p" class="value-content"></span>
+            </div>
+            <div class="card-divider"></div>
+            <div class="value-pair">
+              <span class="value-label">q:</span>
+              <span id="result-q" class="value-content"></span>
+            </div>
+            <div class="card-divider"></div>
+            <div class="value-pair">
+              <span class="value-label">Discriminant:</span>
+              <span id="result-discriminant" class="value-content"></span>
+            </div>
+          </div>
+          <div class="roots-table">
+            <div class="roots-header">
+              <span>Root</span>
+              <span>x</span>
+              <span>y</span>
+            </div>
+            <div class="roots-row">
+              <span>Root 1</span>
+              <span id="root1-x"></span>
+              <span id="root1-y"></span>
+            </div>
+            <div class="roots-row">
+              <span>Root 2</span>
+              <span id="root2-x"></span>
+              <span id="root2-y"></span>
+            </div>
+            <div class="roots-row">
+              <span>Root 3</span>
+              <span id="root3-x"></span>
+              <span id="root3-y"></span>
+            </div>
+          </div>
+        </div>
+        <div class="graph-section">
+          <canvas id="graph" width="500" height="500"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="/script.ts"></script>
+</body>
+
+</html>
