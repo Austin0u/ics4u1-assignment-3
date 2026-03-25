@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 // Methods to solve for roots
 function trigonometricMethod(a: number, b: number, p: number, q: number): number[] {
@@ -54,7 +54,7 @@ export const CubicSolver = () => {
         <div>
             <div>
                 <h1>
-                    Cubic Formula
+                    Cubic Solver
                 </h1>
                 <form onSubmit={handleSubmit}>
                     <label>
@@ -99,7 +99,7 @@ export const CubicSolver = () => {
 
                     <input
                         type="submit"
-                        value="Calculate"
+                        value="Save"
                     />
                 </form>
             </div>
