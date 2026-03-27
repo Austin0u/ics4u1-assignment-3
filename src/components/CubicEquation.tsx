@@ -1,12 +1,46 @@
-import { useState } from "react";
+type CubicProps = {
+    a: number;
+    b: number;
+    c: number;
+    d: number;
+};
 
-export const CubicSolver = () => {
-    const [a, setA] = useState<number>(0);
-    const [b, setB] = useState<number>(0);
-    const [c, setC] = useState<number>(0);
-    const [d, setD] = useState<number>(0);
+export const CubicEquation = ({ a, b, c, d}: CubicProps) => {
+    let equation: string = "";
+
+    // a term (x^3 coefficient)
+    if (a === 1) {
+        equation = "x³";
+    } else if (a === -1) {
+        equation = "-x³";
+    } else {
+        equation = a + "x³";
+    }
+
+    // b term (x^2 coefficient)
+    if (b !== 0) {
+        const sign = b > 0 ? " + " : " - ";
+        const coeff = Math.abs(b);
+        equation += coeff === 1 ? sign + "x²" : sign + coeff + "x²";
+    }
+
+    // c term (x coefficient)
+    if (c !== 0) {
+        const sign = c > 0 ? " + " : " - ";
+        const coeff = Math.abs(c);
+        equation += coeff === 1 ? sign + "x" : sign + coeff + "x";
+    }
+
+    // d term (constant)
+    if (d !== 0) {
+        const sign = d > 0 ? " + " : " - ";
+        equation += sign + Math.abs(d);
+    }
 
     return (
-        <div></div>
+        <div>
+            <h3>{equation += " = 0"}</h3>
+        </div>
     );
 };
+
