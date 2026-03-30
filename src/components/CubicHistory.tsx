@@ -4,9 +4,8 @@ type CubicHistoryProps = {
 };
 
 export const CubicHistory = ({ history, onSelect }: CubicHistoryProps) => {
-    const rows = [];
-
     // Loops through history and creates table of arrays
+    const rows = [];
     for (let i = 0; i < history.length; i += 1) {
         const entry = history[i];
         const a = entry[0];

@@ -50,11 +50,11 @@ export const App = () => {
   // Saving history of a b c d inputs
   const [history, setHistory] = useState<Array<[number, number, number, number]>>([]);
 
-  const saveValues = (): void => {
+  const handleSave = (): void => {
     setHistory(history.concat([[a, b, c, d]]));
   };
 
-  const replaceValues = (a: number, b: number, c: number, d: number): void => { // when table row is clicked, updates values
+  const handleReplace = (a: number, b: number, c: number, d: number): void => { // when table row is clicked, updates values
     setA(a);
     setB(b);
     setC(c);
@@ -83,7 +83,7 @@ export const App = () => {
             setB={setB}
             setC={setC}
             setD={setD}
-            onSave={saveValues}
+            onSave={handleSave}
           />
           <CubicEquation
             a={a}
@@ -116,7 +116,7 @@ export const App = () => {
           <div className="p-4">
             <CubicHistory
               history={history}
-              onSelect={replaceValues}
+              onSelect={handleReplace}
             />
           </div>
         </section>
