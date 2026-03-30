@@ -29,7 +29,13 @@ function calculateRoots(a: number, b: number, p: number, q: number, discriminant
   } else if (discriminant > 0) { // one real root and two complex roots
     roots = [cardanosMethod(a, b, p, q)];
   } else { // one real root with a double, or a triple root
-    roots = [cardanosMethod(a, b, p, q),((p === 0 && q === 0) ? cardanosMethod(a, b, p, q) : Math.cbrt(q / 2) - b / (3 * a))];
+    const rootOne = cardanosMethod(a, b, p, q);
+    if (p === 0 && q === 0) {
+      roots = [rootOne, rootOne, rootOne];
+    } else {
+      const rootTwo = Math.cbrt(q / 2) - b / (3 * a);
+      roots = [rootOne, rootTwo, rootTwo];
+    }
   }
 
   return roots;
@@ -59,7 +65,8 @@ export const App = () => {
   const p: number = (3 * a * c - Math.pow(b, 2)) / (3 * a * a);
   const q: number = (27 * a * a * d - 9 * a * b * c + 2 * Math.pow(b, 3)) / (27 * Math.pow(a, 3));
   const discriminant: number = (q / 2) * (q / 2) + (p / 3) * (p / 3) * (p / 3); // Math.pow() causes some issues in some cases
-  const roots: number[] = calculateRoots(a, b, p, q, discriminant);
+  const discRounded = Math.round(discriminant * 1e12) / 1e12; // round to avoid floating point error
+  const roots: number[] = calculateRoots(a, b, p, q, discRounded);
 
   console.log(a, b, c, d, p, q, discriminant);
 
