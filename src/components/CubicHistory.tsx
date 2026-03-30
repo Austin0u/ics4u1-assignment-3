@@ -18,30 +18,32 @@ export const CubicHistory = ({ history, onSelect }: CubicHistoryProps) => {
             <tr
                 key={a + "-" + b + "-" + c + "-" + d + "-" + i}
                 onClick={() => onSelect(a, b, c, d)}
-                style={{ cursor: "pointer" }}
+                className="cursor-pointer border-t border-gray-200 hover:bg-[#f5f8fc]"
             >
-                <td>{a}</td>
-                <td>{b}</td>
-                <td>{c}</td>
-                <td>{d}</td>
+                <td className="px-3 py-2 text-center">{a}</td>
+                <td className="px-3 py-2 text-center">{b}</td>
+                <td className="px-3 py-2 text-center">{c}</td>
+                <td className="px-3 py-2 text-center">{d}</td>
             </tr>
         );
     }
 
     return (
-        <div>
-            <h2>History</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>a</th>
-                        <th>b</th>
-                        <th>c</th>
-                        <th>d</th>
-                    </tr>
-                </thead>
-                <tbody>{rows}</tbody>
-            </table>
+        <div className="w-full">
+            <h2 className="mb-4 text-lg font-bold text-[#2B4570]">History</h2>
+            <div className="overflow-auto rounded-xl border border-gray-200 bg-transparent">
+                <table className="min-w-full border-collapse text-sm">
+                    <thead>
+                        <tr className="bg-[#2B4570] text-white">
+                            <th className="px-3 py-2 text-center font-semibold">a</th>
+                            <th className="px-3 py-2 text-center font-semibold">b</th>
+                            <th className="px-3 py-2 text-center font-semibold">c</th>
+                            <th className="px-3 py-2 text-center font-semibold">d</th>
+                        </tr>
+                    </thead>
+                    <tbody>{rows}</tbody>
+                </table>
+            </div>
         </div>
     );
 };

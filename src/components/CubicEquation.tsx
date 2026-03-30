@@ -38,8 +38,8 @@ export const CubicEquation = ({ a, b, c, d}: CubicProps) => {
     }
 
     return (
-        <div>
-            <h3>{equation += " = 0"}</h3>
+        <div className="mt-8 w-full max-w-4xl mx-auto">
+            <h3 className="text-center text-2xl font-bold text-[#333]">{equation += " = 0"}</h3>
         </div>
     );
 };

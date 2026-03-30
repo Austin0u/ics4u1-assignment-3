@@ -89,8 +89,8 @@ export const CubicGraph = ({ a, b, c, d, roots }: CubicProps) => {
     }, [a, b, c, d, roots]);
 
     return (
-        <div>
-            <canvas ref={canvasRef} width="500" height="500"></canvas>
+        <div className="flex flex-col items-center justify-center">
+            <canvas ref={canvasRef} width="500" height="500" className="rounded-lg" />
         </div>
     );
 };

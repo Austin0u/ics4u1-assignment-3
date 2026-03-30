@@ -64,43 +64,56 @@ export const App = () => {
   console.log(a, b, c, d, p, q, discriminant);
 
   return (
-    <div>
-      <CubicInput
-        a={a}
-        b={b}
-        c={c}
-        d={d}
-        setA={setA}
-        setB={setB}
-        setC={setC}
-        setD={setD}
-        onSave={saveValues}
-      />
-      <CubicEquation
-        a={a}
-        b={b}
-        c={c}
-        d={d}
-      />
-      <div> 
-        <CubicTable
-          p={p}
-          q={q}
-          discriminant={discriminant}
-          roots={roots}
-        />
-        <CubicGraph
-          a={a}
-          b={b}
-          c={c}
-          d={d}
-          roots={roots}
-        />
+    <div className="min-h-screen bg-white text-[#2B4570] font-sans p-5">
+      <div className="mx-auto flex w-full max-w-6xl flex-col items-center">
+        <div className="w-full px-2 md:px-0">
+          <CubicInput
+            a={a}
+            b={b}
+            c={c}
+            d={d}
+            setA={setA}
+            setB={setB}
+            setC={setC}
+            setD={setD}
+            onSave={saveValues}
+          />
+          <CubicEquation
+            a={a}
+            b={b}
+            c={c}
+            d={d}
+          />
+        </div>
+
+        <section className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1.4fr_1fr]">
+          <div className="p-4">
+            <CubicTable
+              p={p}
+              q={q}
+              discriminant={discriminant}
+              roots={roots}
+            />
+          </div>
+
+          <div className="p-4">
+            <CubicGraph
+              a={a}
+              b={b}
+              c={c}
+              d={d}
+              roots={roots}
+            />
+          </div>
+
+          <div className="p-4">
+            <CubicHistory
+              history={history}
+              onSelect={replaceValues}
+            />
+          </div>
+        </section>
       </div>
-      <CubicHistory
-        history={history}
-        onSelect={replaceValues}
-      />
     </div>
   );
 };

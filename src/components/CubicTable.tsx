@@ -15,41 +15,40 @@ const formatRoot = (roots: number[], index: number): string => {
 
 export const CubicTable = ({p, q, discriminant, roots }: CubicProps) => {
     return (
-        <div>
-            <div>
-                <div>
-                    <span>p:</span>
-                    <span>{p.toFixed(2)}</span>
+        <div className="space-y-4">
+            <div className="rounded-xl border border-gray-200 bg-transparent p-2 text-sm text-black">
+                <div className="flex items-center justify-between px-3 py-2">
+                    <span className="font-semibold text-[#2B4570]">p:</span>
+                    <span className="font-semibold">{p.toFixed(2)}</span>
                 </div>
-                <div></div>
-                <div>
-                    <span>q:</span>
-                    <span>{q.toFixed(2)}</span>
+                <div className="border-t border-gray-200 flex items-center justify-between px-3 py-2">
+                    <span className="font-semibold text-[#2B4570]">q:</span>
+                    <span className="font-semibold">{q.toFixed(2)}</span>
                 </div>
-                <div></div>
-                <div>
-                    <span>Discriminant:</span>
-                    <span>{discriminant.toFixed(2)}</span>
+                <div className="border-t border-gray-200 flex items-center justify-between px-3 py-2">
+                    <span className="font-semibold text-[#2B4570]">Discriminant:</span>
+                    <span className="font-semibold">{discriminant.toFixed(2)}</span>
                 </div>
             </div>
-            <div>
-                <div>
+
+            <div className="overflow-hidden text-sm rounded-xl border border-gray-200 bg-transparent">
+                <div className="grid grid-cols-3 gap-2 bg-[#2B4570] px-3 py-2 text-center text-white font-bold">
                     <span>Root</span>
                     <span>x</span>
                     <span>y</span>
                 </div>
-                <div>
-                    <span>Root 1</span>
+                <div className="grid grid-cols-3 gap-2 border-t border-gray-200 px-3 py-2 text-center">
+                    <span className="font-medium">Root 1</span>
                     <span>{formatRoot(roots, 0)}</span>
                     <span>0</span>
                 </div>
-                <div>
-                    <span>Root 2</span>
+                <div className="grid grid-cols-3 gap-2 border-t border-gray-200 px-3 py-2 text-center">
+                    <span className="font-medium">Root 2</span>
                     <span>{formatRoot(roots, 1)}</span>
                     <span>0</span>
                 </div>
-                <div>
-                    <span>Root 3</span>
+                <div className="grid grid-cols-3 gap-2 border-t border-gray-200 px-3 py-2 text-center">
+                    <span className="font-medium">Root 3</span>
                     <span>{formatRoot(roots, 2)}</span>
                     <span>0</span>
                 </div>
