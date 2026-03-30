@@ -13,7 +13,7 @@ const formatRoot = (roots: number[], index: number): string => {
     return value.toFixed(2);
 };
 
-export const CubicTable = ({p, q, discriminant, roots }: CubicProps) => {
+export const CubicTable = ({ p, q, discriminant, roots }: CubicProps) => {
     return (
         <div className="space-y-4">
             <div className="rounded-xl border border-gray-200 bg-transparent p-2 text-sm text-black">

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import cat from "./images/cat.jpg";
 import { CubicInput } from "./components/CubicInput";
 import { CubicEquation } from "./components/CubicEquation";
 import { CubicTable } from "./components/CubicTable";
@@ -22,7 +23,7 @@ function calculateRoots(a: number, b: number, p: number, q: number, discriminant
   const cardanosMethod = (a: number, b: number, p: number, q: number): number => {
     return Math.cbrt((-q / 2) + Math.sqrt(Math.pow(q / 2, 2) + Math.pow(p / 3, 3))) + Math.cbrt((-q / 2) - Math.sqrt(Math.pow(q / 2, 2) + Math.pow(p / 3, 3))) - b / (3 * a);
   }
-  
+
   // Determining Case
   if (discriminant < 0) { // three distinct roots 
     roots = trigonometricMethod(a, b, p, q);
@@ -101,6 +102,7 @@ export const App = () => {
               discriminant={discriminant}
               roots={roots}
             />
+            <img id="cat" className="mt-16 mx-auto block max-h-[120px] hover:animate-spin hover:duration-500 hover:ease-linear" src={cat} alt="A cat on a computer" />
           </div>
 
           <div className="p-4">

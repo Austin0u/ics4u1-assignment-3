@@ -5,7 +5,7 @@ type CubicProps = {
     d: number;
 };
 
-export const CubicEquation = ({ a, b, c, d}: CubicProps) => {
+export const CubicEquation = ({ a, b, c, d }: CubicProps) => {
     let equation: string = "";
 
     // a term (x^3 coefficient)
