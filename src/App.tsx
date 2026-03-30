@@ -1,10 +1,10 @@
 import { useState } from "react";
-import cat from "./images/cat.jpg";
 import { CubicInput } from "./components/CubicInput";
 import { CubicEquation } from "./components/CubicEquation";
 import { CubicTable } from "./components/CubicTable";
 import { CubicGraph } from "./components/CubicGraph";
 import { CubicHistory } from "./components/CubicHistory";
+import cat from "./images/cat.jpg";
 
 function calculateRoots(a: number, b: number, p: number, q: number, discriminant: number): number[] {
   let roots: number[] = [];
