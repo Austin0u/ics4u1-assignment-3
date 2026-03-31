@@ -43,7 +43,7 @@ function calculateRoots(a: number, b: number, p: number, q: number, discriminant
 }
 
 export const App = () => {
-  const [a, setA] = useState<number>(0);
+  const [a, setA] = useState<number>(1);
   const [b, setB] = useState<number>(0);
   const [c, setC] = useState<number>(0);
   const [d, setD] = useState<number>(0);
