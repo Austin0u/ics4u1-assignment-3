@@ -80,18 +80,24 @@ function drawGraph(canvas: HTMLCanvasElement, a: number, b: number, c: number, d
 }
 
 export const CubicGraph = ({ a, b, c, d, roots }: CubicGraphProps) => {
-    const canvasRef = useRef<HTMLCanvasElement>(null);
+    if (a === 0) {
+        return (
+            <div></div>
+        );
+    } else {
+        const canvasRef = useRef<HTMLCanvasElement>(null);
 
-    useEffect(() => {
-        if (canvasRef.current) {
-            drawGraph(canvasRef.current, a, b, c, d, roots);
-        }
-    }, [a, b, c, d, roots]);
+        useEffect(() => {
+            if (canvasRef.current) {
+                drawGraph(canvasRef.current, a, b, c, d, roots);
+            }
+        }, [a, b, c, d, roots]);
 
-    return (
-        <div className="flex flex-col items-center justify-center">
-            <canvas ref={canvasRef} width="500" height="500" className="rounded-lg" />
-        </div>
-    );
+        return (
+            <div className="flex flex-col items-center justify-center">
+                <canvas ref={canvasRef} width="500" height="500"/>
+            </div>
+        );
+    }
 };
 

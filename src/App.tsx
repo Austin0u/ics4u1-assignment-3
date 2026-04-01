@@ -34,6 +34,32 @@ export const App = () => {
   const discRounded = Math.round(discriminant * 1e12) / 1e12; // round to avoid floating point error
   const roots: number[] = calculateRoots(a, b, p, q, discRounded); // Access imported calculation function (keeps app clean of extra functions)
 
+  if (a === 0) {
+    return (
+      <div className="min-h-screen bg-white text-[#2B4570] font-sans p-5">
+
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-center">
+          <div className="w-full px-2 md:px-0">
+            <CubicInput
+              a={a}
+              b={b}
+              c={c}
+              d={d}
+              setA={setA}
+              setB={setB}
+              setC={setC}
+              setD={setD}
+              onSave={handleSave}
+            />
+            <div className="mt-8 w-full max-w-4xl mx-auto">
+              <h3 className="text-center text-2xl font-bold text-[#333]">a-value cannot be zero</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-white text-[#2B4570] font-sans p-5">
       <div className="mx-auto flex w-full max-w-6xl flex-col items-center">
