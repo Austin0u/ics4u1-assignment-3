@@ -1,11 +1,11 @@
-type CubicProps = {
+type CubicEquationProps = {
     a: number;
     b: number;
     c: number;
     d: number;
 };
 
-export const CubicEquation = ({ a, b, c, d }: CubicProps) => {
+export const CubicEquation = ({ a, b, c, d }: CubicEquationProps) => {
     let equation: string = "";
 
     // a term (x^3 coefficient)
@@ -39,7 +39,7 @@ export const CubicEquation = ({ a, b, c, d }: CubicProps) => {
 
     return (
         <div className="mt-8 w-full max-w-4xl mx-auto">
-            <h3 className="text-center text-2xl font-bold text-[#333]">{equation += " = 0"}</h3>
+            <h3 className="text-center text-2xl font-bold text-[#333]">{equation} = 0</h3>
         </div>
     );
 };

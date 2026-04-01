@@ -1,4 +1,4 @@
-type CubicProps = {
+type CubicInputProps = {
     a: number;
     b: number;
     c: number;
@@ -10,7 +10,7 @@ type CubicProps = {
     onSave: () => void;
 };
 
-export const CubicInput = ({ a, b, c, d, setA, setB, setC, setD, onSave }: CubicProps) => {
+export const CubicInput = ({ a, b, c, d, setA, setB, setC, setD, onSave }: CubicInputProps) => {
     const handleSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
         event.preventDefault();
         onSave();

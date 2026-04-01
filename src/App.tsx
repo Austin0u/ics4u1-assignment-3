@@ -39,7 +39,7 @@ function calculateRoots(a: number, b: number, p: number, q: number, discriminant
     }
   }
 
-  return roots;
+  return roots.sort((a, b) => a - b); // Sort roots in ascending value order
 }
 
 export const App = () => {
@@ -68,8 +68,6 @@ export const App = () => {
   const discriminant: number = (q / 2) * (q / 2) + (p / 3) * (p / 3) * (p / 3); // Math.pow() causes some issues in some cases
   const discRounded = Math.round(discriminant * 1e12) / 1e12; // round to avoid floating point error
   const roots: number[] = calculateRoots(a, b, p, q, discRounded);
-
-  console.log(a, b, c, d, p, q, discriminant);
 
   return (
     <div className="min-h-screen bg-white text-[#2B4570] font-sans p-5">
@@ -102,7 +100,7 @@ export const App = () => {
               discriminant={discriminant}
               roots={roots}
             />
-            <img id="cat" className="mt-16 mx-auto block max-h-[120px] hover:animate-spin hover:duration-500 hover:ease-linear" src={cat} alt="A cat on a computer" />
+            <img id="cat" className="mt-16 mx-auto block max-h-[120px] hover:animate-spin hover:duration-400 hover:ease-linear" src={cat} alt="A cat on a computer" />
           </div>
 
           <div className="p-4">

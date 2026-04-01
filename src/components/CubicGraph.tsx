@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react';
 
-type CubicProps = {
+type CubicGraphProps = {
     a: number;
     b: number;
     c: number;
@@ -79,7 +79,7 @@ function drawGraph(canvas: HTMLCanvasElement, a: number, b: number, c: number, d
     }
 }
 
-export const CubicGraph = ({ a, b, c, d, roots }: CubicProps) => {
+export const CubicGraph = ({ a, b, c, d, roots }: CubicGraphProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
