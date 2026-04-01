@@ -19,15 +19,15 @@ export const CubicTable = ({ p, q, discriminant, roots }: CubicTableProps) => {
             <div className="rounded-xl border border-gray-200 bg-transparent p-2 text-sm text-black">
                 <div className="flex items-center justify-between px-3 py-2">
                     <span className="font-semibold text-[#2B4570]">p:</span>
-                    <span className="font-semibold">{p.toFixed(2)}</span>
+                    <span className="font-semibold">{p.toFixed(5)}</span>
                 </div>
                 <div className="border-t border-gray-200 flex items-center justify-between px-3 py-2">
                     <span className="font-semibold text-[#2B4570]">q:</span>
-                    <span className="font-semibold">{q.toFixed(2)}</span>
+                    <span className="font-semibold">{q.toFixed(5)}</span>
                 </div>
                 <div className="border-t border-gray-200 flex items-center justify-between px-3 py-2">
                     <span className="font-semibold text-[#2B4570]">Discriminant:</span>
-                    <span className="font-semibold">{discriminant.toFixed(2)}</span>
+                    <span className="font-semibold">{discriminant.toFixed(5)}</span>
                 </div>
             </div>
 
