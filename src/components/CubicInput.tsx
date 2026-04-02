@@ -13,7 +13,12 @@ type CubicInputProps = {
 export const CubicInput = ({ a, b, c, d, setA, setB, setC, setD, onSave }: CubicInputProps) => {
     const handleSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
         event.preventDefault();
-        onSave();
+
+        if (a !== 0) { // only allow save when a != 0
+            onSave();
+        } else {
+            alert("You cannot save if a = 0")
+        };
     };
 
     return (
