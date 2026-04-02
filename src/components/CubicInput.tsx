@@ -62,7 +62,7 @@ export const CubicInput = ({ a, b, c, d, setA, setB, setC, setD, onSave }: Cubic
                         />
                     </div>
                     <input
-                        className="rounded-lg bg-[#2B4570] px-5 py-2 text-white font-bold shadow-sm hover:opacity-90"
+                        className="rounded-lg bg-[#2B4570] px-6 py-5 text-white font-bold shadow-sm hover:opacity-90"
                         type="submit"
                         value="Save"
                     />
