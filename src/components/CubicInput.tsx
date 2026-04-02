@@ -31,7 +31,6 @@ export const CubicInput = ({ a, b, c, d, setA, setB, setC, setD, onSave }: Cubic
                             required
                         />
                     </div>
-
                     <div className="flex flex-col items-center gap-2">
                         <label className="text-sm font-bold text-[#2B4570]">b value:</label>
                         <input
@@ -42,7 +41,6 @@ export const CubicInput = ({ a, b, c, d, setA, setB, setC, setD, onSave }: Cubic
                             required
                         />
                     </div>
-
                     <div className="flex flex-col items-center gap-2">
                         <label className="text-sm font-bold text-[#2B4570]">c value:</label>
                         <input
@@ -53,7 +51,6 @@ export const CubicInput = ({ a, b, c, d, setA, setB, setC, setD, onSave }: Cubic
                             required
                         />
                     </div>
-
                     <div className="flex flex-col items-center gap-2">
                         <label className="text-sm font-bold text-[#2B4570]">d value:</label>
                         <input
@@ -64,7 +61,6 @@ export const CubicInput = ({ a, b, c, d, setA, setB, setC, setD, onSave }: Cubic
                             required
                         />
                     </div>
-
                     <input
                         className="rounded-lg bg-[#2B4570] px-5 py-2 text-white font-bold shadow-sm hover:opacity-90"
                         type="submit"
