@@ -5,12 +5,12 @@ function derivative(fx: number[][]): number[][] {
     let gx: number[][] = [];
 
     const powerRule = (coef: number, exp: number): number[] => {
-        return [coef * exp, exp - 1]; 
+        return [coef * exp, exp - 1];
     };
 
     for (const term of fx) {
-        if (term[1]-1 >= 0) {
-            gx.push(powerRule(term[0],term[1]));
+        if (term[1] - 1 >= 0) {
+            gx.push(powerRule(term[0], term[1]));
         };
     }
 
@@ -45,11 +45,11 @@ function solveY(fx: number[][], x: number): number {
     return y;
 }
 
-// make function to determine local min max points (x AND y, solve using the solveY function), as well as if it is min or max (string)?
-export function localMinMax(fx: number[][]): Array<{x: number, y: number, type: string}> {
+// Main function to export
+export function localMinMax(fx: number[][]): Array<{ x: number, y: number, type: string }> {
     const gx = derivative(fx);
     const roots = quadraticRoots(gx[0][0], gx[1][0], gx[2][0]); // takes the derivative (a quadratic) and finds x-ints / roots
-    let minMaxPoints: Array<{x: number, y: number, type: string}> = []; // initalize
+    let minMaxPoints: Array<{ x: number, y: number, type: string }> = [];
 
     // Analyze each crtical point 
     for (const root of roots) {
@@ -61,5 +61,5 @@ export function localMinMax(fx: number[][]): Array<{x: number, y: number, type: 
         };
     };
 
-    return minMaxPoints.sort((a, b) => a.x - b.x); // sort by x value
+    return minMaxPoints.sort((a, b) => a.x - b.x);
 }

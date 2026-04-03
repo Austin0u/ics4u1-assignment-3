@@ -33,7 +33,7 @@ export const App = () => {
   const q: number = (27 * a * a * d - 9 * a * b * c + 2 * Math.pow(b, 3)) / (27 * Math.pow(a, 3));
   const discriminant: number = (q / 2) * (q / 2) + (p / 3) * (p / 3) * (p / 3); // Math.pow() causes some issues in some cases
   const discRounded = Math.round(discriminant * 1e12) / 1e12; // round to avoid floating point error
-  const roots: number[] = calculateCubicRoots(a, b, p, q, discRounded); 
+  const roots: number[] = calculateCubicRoots(a, b, p, q, discRounded);
   const minMaxPoints = localMinMax([[a, 3], [b, 2], [c, 1], [d, 0]]);
 
   // if a is 0, then dont show other elements besides form + a note (using alert loops weirdly))
@@ -60,58 +60,58 @@ export const App = () => {
         </div>
       </div>
     );
-  }
-
-  return (
-    <div className="min-h-screen bg-white text-[#2B4570] font-sans p-5">
-      <div className="mx-auto flex w-full max-w-6xl flex-col items-center">
-        <div className="w-full px-2 md:px-0">
-          <CubicInput
-            a={a}
-            b={b}
-            c={c}
-            d={d}
-            setA={setA}
-            setB={setB}
-            setC={setC}
-            setD={setD}
-            onSave={handleSave}
-          />
-          <CubicEquation
-            a={a}
-            b={b}
-            c={c}
-            d={d}
-          />
-        </div>
-        <section className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1.4fr_1fr]">
-          <div className="p-4">
-            <CubicTable
-              p={p}
-              q={q}
-              discriminant={discriminant}
-              roots={roots}
-              minMaxPoints={minMaxPoints}
-            />
-          </div>
-          <div className="p-4">
-            <CubicGraph
+  } else {
+    return (
+      <div className="min-h-screen bg-white text-[#2B4570] font-sans p-5">
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-center">
+          <div className="w-full px-2 md:px-0">
+            <CubicInput
               a={a}
               b={b}
               c={c}
               d={d}
-              roots={roots}
+              setA={setA}
+              setB={setB}
+              setC={setC}
+              setD={setD}
+              onSave={handleSave}
+            />
+            <CubicEquation
+              a={a}
+              b={b}
+              c={c}
+              d={d}
             />
           </div>
-          <div className="p-4">
-            <CubicHistory
-              history={history}
-              onSelect={handleReplace}
-            />
-            <img id="cat" className="mt-16 mx-auto block max-h-[120px] hover:animate-spin hover:duration-300 hover:ease-linear" src={cat} alt="A cat on a computer" />
-          </div>
-        </section>
+          <section className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1.4fr_1fr]">
+            <div className="p-4">
+              <CubicTable
+                p={p}
+                q={q}
+                discriminant={discriminant}
+                roots={roots}
+                minMaxPoints={minMaxPoints}
+              />
+            </div>
+            <div className="p-4">
+              <CubicGraph
+                a={a}
+                b={b}
+                c={c}
+                d={d}
+                roots={roots}
+              />
+            </div>
+            <div className="p-4">
+              <CubicHistory
+                history={history}
+                onSelect={handleReplace}
+              />
+              <img id="cat" className="mt-16 mx-auto block max-h-[120px] hover:animate-spin hover:duration-300 hover:ease-linear" src={cat} alt="A cat on a computer" />
+            </div>
+          </section>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 };

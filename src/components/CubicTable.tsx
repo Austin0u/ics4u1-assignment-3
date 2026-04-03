@@ -3,7 +3,7 @@ type CubicTableProps = {
     q: number;
     discriminant: number;
     roots: number[];
-    minMaxPoints: Array<{x: number, y: number, type: string}>;
+    minMaxPoints: Array<{ x: number, y: number, type: string }>;
 };
 
 const formatRoot = (roots: number[], index: number): string => {
@@ -45,6 +45,7 @@ export const CubicTable = ({ p, q, discriminant, roots, minMaxPoints }: CubicTab
                     <col className="w-1/3" />
                     <col className="w-1/3" />
                 </colgroup>
+
                 <thead>
                     <tr className="bg-[#2B4570] text-white font-bold text-center">
                         <th className="px-3 py-2">Root</th>
@@ -82,6 +83,7 @@ export const CubicTable = ({ p, q, discriminant, roots, minMaxPoints }: CubicTab
                     <col className="w-1/3" />
                     <col className="w-1/3" />
                 </colgroup>
+
                 <thead>
                     <tr className="bg-[#2B4570] text-white font-bold text-center">
                         <th className="px-3 py-2">Min/Max</th>
@@ -89,6 +91,7 @@ export const CubicTable = ({ p, q, discriminant, roots, minMaxPoints }: CubicTab
                         <th className="px-3 py-2">y</th>
                     </tr>
                 </thead>
+
                 <tbody className="text-center">
                     <tr>
                         <td className="border-t border-gray-200 px-3 py-2 font-medium">
@@ -114,7 +117,6 @@ export const CubicTable = ({ p, q, discriminant, roots, minMaxPoints }: CubicTab
                     </tr>
                 </tbody>
             </table>
-
         </div>
     );
 };
