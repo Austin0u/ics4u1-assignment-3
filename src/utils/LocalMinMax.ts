@@ -1,3 +1,4 @@
+// Reusable helper for derivative
 function derivative(fx: number[][]): number[][] {
     // structure: array of terms -> [termA, termB], each term is array of coef and exp -> [coef, exp]
     // e.g. [[3,2],[-1,2]] -> 3x^2 - x^2
@@ -16,7 +17,7 @@ function derivative(fx: number[][]): number[][] {
     return gx;
 }
 
-//finding roots
+// finding roots
 function quadraticRoots(a: number, b: number, c: number): number[] {
     const discriminant = b * b - 4 * a * c;
 
@@ -45,17 +46,20 @@ function solveY(fx: number[][], x: number): number {
 }
 
 // make function to determine local min max points (x AND y, solve using the solveY function), as well as if it is min or max (string)?
+export function localMinMax(fx: number[][]): Array<{x: number, y: number, type: string}> {
+    const gx = derivative(fx);
+    const roots = quadraticRoots(gx[0][0], gx[1][0], gx[2][0]); // takes the derivative (a quadratic) and finds x-ints / roots
+    let minMaxPoints: Array<{x: number, y: number, type: string}> = []; // initalize
 
-// set up 
-const cubic =[[1,3],[6,2],[11,1], [6,0]];
-const quadratic = derivative(cubic);
-const linear = derivative(quadratic);
+    // Analyze each crtical point 
+    for (const root of roots) {
+        const secondDerivative = derivative(gx);
+        const secondDerivativeValue = solveY(secondDerivative, root);
 
-const roots = quadraticRoots(quadratic[0][0],quadratic[1][0],quadratic[2][0]);
+        if (secondDerivativeValue !== 0) {
+            minMaxPoints.push({ x: root, y: solveY(fx, root), type: (secondDerivativeValue > 0) ? "Min" : "Max" });
+        };
+    };
 
-console.log(roots);
-
-// find min or max
-for (const root of roots) {
-    console.log([root, solveY(linear, root)]);
-};
+    return minMaxPoints.sort((a, b) => a.x - b.x); // sort by x value
+}

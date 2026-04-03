@@ -8,7 +8,13 @@ export const CubicHistory = ({ history, onSelect }: CubicHistoryProps) => {
         <div className="w-full">
             <h2 className="mb-4 text-lg font-bold text-[#2B4570]">History</h2>
             <div className="overflow-auto rounded-xl border border-gray-200 bg-transparent">
-                <table className="min-w-full border-collapse text-sm">
+                <table className="min-w-full table-fixed border-separate border-spacing-0 text-sm">
+                    <colgroup>
+                        <col className="w-1/4" />
+                        <col className="w-1/4" />
+                        <col className="w-1/4" />
+                        <col className="w-1/4" />
+                    </colgroup>
                     <thead>
                         <tr className="bg-[#2B4570] text-white">
                             <th className="px-3 py-2 text-center font-semibold">a</th>
@@ -20,7 +26,7 @@ export const CubicHistory = ({ history, onSelect }: CubicHistoryProps) => {
                     <tbody>
                         {history.map(([a, b, c, d], index) => (
                             <tr
-                                key={`${a}-${b}-${c}-${d}-${index}`}
+                                key={index}
                                 onClick={() => onSelect(a, b, c, d)}
                                 className="cursor-pointer border-t border-gray-200 hover:bg-[#f5f8fc]"
                             >
@@ -36,4 +42,3 @@ export const CubicHistory = ({ history, onSelect }: CubicHistoryProps) => {
         </div>
     );
 };
-

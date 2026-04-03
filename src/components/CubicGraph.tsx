@@ -6,15 +6,14 @@ type CubicGraphProps = {
     c: number;
     d: number;
     roots: number[];
+    gridSize: number;
 };
 
-function drawGraph(canvas: HTMLCanvasElement, a: number, b: number, c: number, d: number, roots: number[]): void {
+function drawGraph(canvas: HTMLCanvasElement, a: number, b: number, c: number, d: number, roots: number[], gridSize: number): void {
     const ctx = canvas.getContext("2d")!;
     const width = ctx.canvas.width;
     const height = ctx.canvas.height;
     ctx.clearRect(0, 0, width, height);
-
-    const gridSize: number = 20; // scaling (e.g. 10 = 5 units left and right, going from -5 to 5). should be an even number
 
     // convert graph coords to canvas (aka translating cartesian coordinates)
     const toCanvasX = (x: number): number => {
@@ -79,14 +78,14 @@ function drawGraph(canvas: HTMLCanvasElement, a: number, b: number, c: number, d
     }
 }
 
-export const CubicGraph = ({ a, b, c, d, roots }: CubicGraphProps) => {
+export const CubicGraph = ({ a, b, c, d, roots, gridSize }: CubicGraphProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
         if (canvasRef.current) {
-            drawGraph(canvasRef.current, a, b, c, d, roots);
+            drawGraph(canvasRef.current, a, b, c, d, roots, gridSize);
         }
-    }, [a, b, c, d, roots]);
+    }, [a, b, c, d, roots, gridSize]);
 
     return (
         <div className="flex flex-col items-center justify-center">
