@@ -21,14 +21,13 @@ function derivative(fx: number[][]): number[][] {
 function quadraticRoots(a: number, b: number, c: number): number[] {
     const discriminant = b * b - 4 * a * c;
 
-    if (discriminant < 0) {
-        console.log("No Roots");
+    if (discriminant < 0) { // no roots
         return [];
-    } else if (discriminant > 0) {
+    } else if (discriminant > 0) { // two roots
         const rootOne = (-b + Math.sqrt(discriminant)) / (2 * a);
         const rootTwo = (-b - Math.sqrt(discriminant)) / (2 * a);
         return [rootOne, rootTwo];
-    } else {
+    } else { // one root
         const rootOne = (-b + Math.sqrt(discriminant)) / (2 * a);
         return [rootOne];
     };
