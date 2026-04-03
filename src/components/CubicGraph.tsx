@@ -54,7 +54,7 @@ function drawGraph(canvas: HTMLCanvasElement, a: number, b: number, c: number, d
     ctx.lineWidth = 2;
     ctx.beginPath();
 
-    for (let x = -gridSize; x < gridSize; x += 0.15) {
+    for (let x = -gridSize; x < gridSize; x += (2 * gridSize) / width) { // adjusting step based on grid size to maintain detail
         const cx = toCanvasX(x);
         const cy = toCanvasY(a * x ** 3 + b * x ** 2 + c * x + d);
         ctx.lineTo(cx, cy);
@@ -93,7 +93,7 @@ export const CubicGraph = ({ a, b, c, d, roots }: CubicGraphProps) => {
                     value={localGridSize}
                     onChange={(e) => {
                         const value = Number(e.target.value);
-                        if (!Number.isNaN(value) && value > 0) {
+                        if (!Number.isNaN(value) && value > 0 && value <= 50) { // cap the values
                             setLocalGridSize(value);
                         }
                     }}
