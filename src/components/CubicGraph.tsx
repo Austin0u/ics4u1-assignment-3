@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 type CubicGraphProps = {
     a: number;
@@ -6,7 +6,6 @@ type CubicGraphProps = {
     c: number;
     d: number;
     roots: number[];
-    gridSize: number;
 };
 
 function drawGraph(canvas: HTMLCanvasElement, a: number, b: number, c: number, d: number, roots: number[], gridSize: number): void {
@@ -15,28 +14,26 @@ function drawGraph(canvas: HTMLCanvasElement, a: number, b: number, c: number, d
     const height = ctx.canvas.height;
     ctx.clearRect(0, 0, width, height);
 
-    // convert graph coords to canvas (aka translating cartesian coordinates)
     const toCanvasX = (x: number): number => {
-        return width / 2 + (x / gridSize) * width; //ex. x = 5, -> (5 + 10) / 20 becomes the % on the graph, then times width to scale it
+        return width / 2 + (x / (2 * gridSize)) * width;
     };
 
     const toCanvasY = (y: number): number => {
-        return height / 2 - (y / gridSize) * height; // canvas y starts at top, so move to middle and subtract % of graph
+        return height / 2 - (y / (2 * gridSize)) * height;
     };
 
-    // Draw grid
     ctx.strokeStyle = "#e0e0e0";
     ctx.lineWidth = 0.5;
 
-    for (let x = -gridSize / 2; x <= gridSize / 2; x++) { // vertical lines
-        const cx: number = toCanvasX(x);
+    for (let x = -gridSize; x <= gridSize; x++) {
+        const cx = toCanvasX(x);
         ctx.beginPath();
         ctx.moveTo(cx, 0);
         ctx.lineTo(cx, height);
         ctx.stroke();
     }
 
-    for (let y = -gridSize / 2; y <= gridSize / 2; y++) { // horizontal lines
+    for (let y = -gridSize; y <= gridSize; y++) {
         const cy = toCanvasY(y);
         ctx.beginPath();
         ctx.moveTo(0, cy);
@@ -44,53 +41,65 @@ function drawGraph(canvas: HTMLCanvasElement, a: number, b: number, c: number, d
         ctx.stroke();
     }
 
-    // Draw axes
     ctx.strokeStyle = "#aaaaaa";
     ctx.lineWidth = 1;
     ctx.beginPath();
-    ctx.moveTo(0, height / 2); ctx.lineTo(width, height / 2); // x axis
-    ctx.moveTo(width / 2, 0); ctx.lineTo(width / 2, height); // y axis
+    ctx.moveTo(0, height / 2);
+    ctx.lineTo(width, height / 2);
+    ctx.moveTo(width / 2, 0);
+    ctx.lineTo(width / 2, height);
     ctx.stroke();
 
-    // Draw curve
     ctx.strokeStyle = "#E49273";
     ctx.lineWidth = 2;
     ctx.beginPath();
 
-    for (let x = -gridSize / 2; x < gridSize / 2; x += 0.15) { // smaller step = more detailed curve.
+    for (let x = -gridSize; x < gridSize; x += 0.15) {
         const cx = toCanvasX(x);
-        const cy = toCanvasY(a * Math.pow(x, 3) + b * Math.pow(x, 2) + c * x + d); // use abcd values to calculate y for each x
-
+        const cy = toCanvasY(a * x ** 3 + b * x ** 2 + c * x + d);
         ctx.lineTo(cx, cy);
     }
 
     ctx.stroke();
 
-    // Draw roots as dots
     ctx.fillStyle = "#7180acff";
-
     for (const root of roots) {
         const cx = toCanvasX(root);
         const cy = toCanvasY(0);
         ctx.beginPath();
-        ctx.arc(cx, cy, 4, 0, Math.PI * 2); // makes a circle (x, y, radius, startAngle, endAngle)
+        ctx.arc(cx, cy, 4, 0, Math.PI * 2);
         ctx.fill();
     }
 }
 
-export const CubicGraph = ({ a, b, c, d, roots, gridSize }: CubicGraphProps) => {
+export const CubicGraph = ({ a, b, c, d, roots }: CubicGraphProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
+
+    const [localGridSize, setLocalGridSize] = useState<number>(10);
 
     useEffect(() => {
         if (canvasRef.current) {
-            drawGraph(canvasRef.current, a, b, c, d, roots, gridSize);
+            drawGraph(canvasRef.current, a, b, c, d, roots, localGridSize);
         }
-    }, [a, b, c, d, roots, gridSize]);
+    }, [a, b, c, d, roots, localGridSize]);
 
     return (
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center">
             <canvas ref={canvasRef} width="500" height="500" />
+            <div className="mt-2 w-full flex justify-end items-center gap-2 text-sm">
+                <span className="text-[#2B4570] font-medium">Grid Size:</span>
+                <input
+                    type="number"
+                    value={localGridSize}
+                    onChange={(e) => {
+                        const value = Number(e.target.value);
+                        if (!Number.isNaN(value) && value > 0) {
+                            setLocalGridSize(value);
+                        }
+                    }}
+                    className="w-15 rounded-md border border-gray-300 px-2 py-1 text-right"
+                />
+            </div>
         </div>
     );
 };
-

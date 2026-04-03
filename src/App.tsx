@@ -101,7 +101,6 @@ export const App = () => {
               c={c}
               d={d}
               roots={roots}
-              gridSize={20}
             />
           </div>
           <div className="p-4">
