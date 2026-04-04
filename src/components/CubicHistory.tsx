@@ -11,7 +11,7 @@ export const CubicHistory = ({ history, onSelect }: CubicHistoryProps) => {
                 <p className="text-gray-500">No history</p>
             ) : (
                 <div className="overflow-auto rounded-xl border border-gray-200 bg-transparent">
-                    <table className="min-w-full table-fixed border-separate border-spacing-0 text-sm">
+                    <table className="min-w-full table-fixed border-collapse border border-gray-200 text-sm">
                         <colgroup>
                             <col className="w-1/4" />
                             <col className="w-1/4" />
