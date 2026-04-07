@@ -54,7 +54,7 @@ export const App = () => {
               onSave={handleSave}
             />
             <div className="mt-8 w-full max-w-4xl mx-auto">
-              <h3 className="text-center text-2xl font-bold text-[#333]">a-value cannot be zero</h3>
+              <h3 className="text-center text-2xl font-bold text-[DarkOrange]">a-value cannot be zero</h3>
             </div>
           </div>
         </div>

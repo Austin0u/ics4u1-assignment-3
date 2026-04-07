@@ -2,7 +2,7 @@
 function derivative(fx: number[][]): number[][] {
     // structure: array of terms -> [termA, termB], each term is array of coef and exp -> [coef, exp]
     // e.g. [[3,2],[-1,2]] -> 3x^2 - x^2
-    let gx: number[][] = [];
+    const gx: number[][] = [];
 
     const powerRule = (coef: number, exp: number): number[] => {
         return [coef * exp, exp - 1];
@@ -48,17 +48,17 @@ function solveY(fx: number[][], x: number): number {
 export function localMinMax(fx: number[][]): Array<{ x: number, y: number, type: string }> {
     const gx = derivative(fx);
     const roots = quadraticRoots(gx[0][0], gx[1][0], gx[2][0]); // takes the derivative (a quadratic) and finds x-ints / roots
-    let minMaxPoints: Array<{ x: number, y: number, type: string }> = [];
+    const minMaxPoints: Array<{ x: number, y: number, type: string }> = [];
 
-    // Analyze each crtical point 
+    // Analyze each critical point
     for (const root of roots) {
         const secondDerivative = derivative(gx);
         const secondDerivativeValue = solveY(secondDerivative, root);
 
         if (secondDerivativeValue !== 0) {
             minMaxPoints.push({ x: root, y: solveY(fx, root), type: (secondDerivativeValue > 0) ? "Min" : "Max" });
-        };
-    };
+        }
+    }
 
     return minMaxPoints.sort((a, b) => a.x - b.x);
 }
