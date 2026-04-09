@@ -29,7 +29,7 @@ export const App = () => {
   };
 
   // Derived States
-  const p: number = (3 * a * c - Math.pow(b, 2)) / (3 * a * a);
+  const p: number = (3 * a * c - b ** 2) / (3 * a * a);
   const q: number = (27 * a * a * d - 9 * a * b * c + 2 * Math.pow(b, 3)) / (27 * Math.pow(a, 3));
   const discriminant: number = (q / 2) * (q / 2) + (p / 3) * (p / 3) * (p / 3); // Math.pow() causes some issues in some cases
   const discRounded = Math.round(discriminant * 1e12) / 1e12; // round to avoid floating point error
